@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 300px;
+    padding: 10px;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  #workspaceName {
+    width: 70%;
+  }
+  
+  #createWorkspace {
+    width: 28%;
+    margin-left: 2%;
+  }
+  
+  .workspace {
+    margin-bottom: 10px;
+  }
+  
+  .workspace > h2 {
+    margin-bottom: 5px;
+  }
+  
+  .workspace > input {
+    width: 100%;
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+  }
+  
+  .workspace > button {
+    margin-right: 5px;
+  }
+  
