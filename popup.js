@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteWorkspaceBtn = document.createElement('button');
     deleteWorkspaceBtn.innerText = 'Delete Workspace';
     deleteWorkspaceBtn.addEventListener('click', () => {
-    deleteWorkspace(workspace.name);
-});
+      deleteWorkspace(workspace.name);
+    });
 
     workspaceDiv.appendChild(workspaceTitle);
     workspaceDiv.appendChild(bookmarkUrlInput);
@@ -64,37 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
     workspaceDiv.appendChild(deleteWorkspaceBtn);
 
     // Add bookmarks list
-    const bookmarksList = document.createElement('ul');
+    const bookmarksList = document.createElement('ol');  // Changed from 'ul' to 'ol'
     bookmarksList.classList.add('bookmarksList');
     workspace.bookmarks.forEach((bookmark, index) => {
-      const bookmarkItem = document.createElement('li'); // Added this line
+      const bookmarkItem = document.createElement('li');
+      bookmarkItem.classList.add('bookmarkItem');  // Add a new class here
       const shortenedUrl = new URL(bookmark.url).hostname;
       bookmarkItem.textContent = shortenedUrl;
+
       const removeBtn = document.createElement('button');
       removeBtn.textContent = 'Remove';
       removeBtn.addEventListener('click', () => {
         removeBookmark(workspace.name, index);
       });
+
       bookmarkItem.appendChild(removeBtn);
       bookmarksList.appendChild(bookmarkItem);
     });
     workspaceDiv.appendChild(bookmarksList);
-
     workspacesContainer.appendChild(workspaceDiv);
-  }
-
-  function updateUI() {
-    // Remove all workspace divs
-    while (workspacesContainer.firstChild) {
-      workspacesContainer.firstChild.remove();
-    }
-
-    // Load existing workspaces
-    chrome.storage.sync.get({ workspaces: [] }, (data) => {
-      data.workspaces.forEach((workspace, index) => {
-        addWorkspaceToUI(workspace, index + 1);
-      });
-    });
   }
 
   function addBookmark(workspaceName, url) {
@@ -108,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
       chrome.storage.sync.set({ workspaces: data.workspaces }, updateUI);
     });
   }
-  
 
   function openWorkspace(workspaceName) {
     chrome.storage.sync.get({ workspaces: [] }, (data) => {
@@ -134,24 +121,36 @@ document.addEventListener('DOMContentLoaded', () => {
       chrome.storage.sync.set({ workspaces: data.workspaces }, updateUI);
     });
   }
-  
+
+  function updateUI() {
+    // Remove all workspace divs
+    while (workspacesContainer.firstChild) {
+      workspacesContainer.firstChild.remove();
+    }
+
+    // Load existing workspaces
+    chrome.storage.sync.get({ workspaces: [] }, (data) => {
+      data.workspaces.forEach((workspace, index) => {
+        addWorkspaceToUI(workspace, index + 1);
+      });
+    });
+  }
 
   // Load existing workspaces on startup
   updateUI();
 
   const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('change', toggleTheme);
+  themeToggle.addEventListener('change', toggleTheme);
 
-function toggleTheme() {
-  const body = document.body;
+  function toggleTheme() {
+    const body = document.body;
 
-  if (themeToggle.checked) {
-    body.classList.remove('light-mode');
-    body.classList.add('dark-mode');
-  } else {
-    body.classList.remove('dark-mode');
-    body.classList.add('light-mode');
+    if (themeToggle.checked) {
+      body.classList.remove('light-mode');
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode');
+    }
   }
-}
 });
-

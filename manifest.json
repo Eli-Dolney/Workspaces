@@ -4,12 +4,7 @@
   "version": "1.0",
   "description": "An extension to manage bookmarks and create custom workspaces",
   "action": {
-    "default_popup": "window.html",
-    "default_icon": {
-      "16": "icons/16.png",
-      "48": "icons/48.png",
-      "128": "icons/128.png"
-    }
+    "default_popup": "window.html"
   },
   "commands": {
     "open_workspace_manager": {

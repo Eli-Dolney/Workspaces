@@ -7,16 +7,26 @@
   <title>Workspaces</title>
 </head>
 <body class="light-mode"> <!-- Add the light-mode class to the body -->
-  <!-- Add the toggle switch element -->
-  <label class="toggle-switch">
-    <input type="checkbox" id="themeToggle">
-    <span class="slider round"></span>
-  </label>
-  <h1>Workspaces</h1>
+  <!-- Add a basic navigation bar -->
+  <nav>
+    <div class="nav-content">
+       <!-- Logo image -->
+      <h1>Workspaces</h1>
+      <a href="bit.ly/Linkedin-Eli">Linkedin</a>
+      <a href="https://elidolney.dev/">My Website</a>
+      <a href="bit.ly/Github-Eli">Github</a>
+      <!-- Move the toggle switch to the navigation bar -->
+      <label class="toggle-switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </nav>
+
   <div>
     <input type="text" id="workspaceName" placeholder="Enter workspace name">
     <button id="createWorkspace">Create Workspace</button>
-    <input type="text" class="bookmarkUrl" placeholder="Enter URL">
+    
   </div>
   <hr>
   <div id="workspacesContainer"></div>
@@ -28,20 +38,6 @@
   </section>
   <hr>
 
-  <!-- New section 2 -->
-  <section>
-    <h2>Section 2</h2>
-    <p>Placeholder description for section 2. Add your content here.</p>
-  </section>
-  <hr>
-
-  <!-- New section 3 -->
-  <section>
-    <h2>Section 3</h2>
-    <p>Placeholder description for section 3. Add your content here.</p>
-  </section>
-  <hr>
-
-  <script src="window.js"></script>
+  <script src="popup.js"></script>
 </body>
 </html>

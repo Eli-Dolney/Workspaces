@@ -1,29 +1,99 @@
 body {
   font-family: Arial, sans-serif;
   width: 90%;
-  max-width: 400px;
+  max-width: 100%;
   padding: 10px;
   margin: 0 auto;
-  background-color: #f5f5f5;
-  color: #333;
   transition: background-color 0.3s, color 0.3s;
 }
 
-h1 {
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 20px;
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #14191f;
 }
+
+.nav-content h1 {
+  margin: 0;
+  flex-grow: 1;
+  color: aliceblue;
+}
+
+.nav-content a {
+  margin-right:20%;
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.nav-content a:hover {
+  text-decoration: underline;
+}
+
+/* The switch - the box around the slider */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.toggle-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #937047; /* Light theme color */
+  transition: .4s;
+}
+
+.toggle-switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #e7dac7; /* Light theme color */
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #241f1c; /* Dark theme color */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+  background-color: #937047; /* Dark theme color */
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 
 button {
   cursor: pointer;
-  background-color: #007BFF;
-  border: none;
-  color: white;
   padding: 8px 12px;
-  font-size: 14px;
+  border: none;
   border-radius: 4px;
-  margin-bottom: 10px;
+  font-size: 14px;
   transition: background-color 0.3s;
 }
 
@@ -36,50 +106,30 @@ input {
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 14px;
-  color: #495057;
-  width: 100%;
-}
-
-#workspaceName {
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}
-
-#createWorkspace {
   width: 100%;
 }
 
 .workspace {
-  background-color: gray;
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 4px;
   width: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  border: solid 2px blueviolet;
 }
 
 .workspace > h2 {
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
 }
 
 .workspace > input {
-  padding: 0.25em;
+  padding: .25em;
   margin-bottom: 0.5em;
-  align-items: center;
 }
 
 .workspace > button {
   margin-right: 5px;
-}
-
-hr {
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
 }
 
 .bookmarksList {
@@ -88,88 +138,83 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 2px red;
 }
 
 .bookmarksList > li {
   margin-bottom: 5px;
-  border: solid 2px purple;
 }
 
+/* Light Mode */
 body.light-mode {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #e7dac7;
+  color: #241f1c;
 }
 
+body.light-mode .workspace {
+  background-color: #937047;
+  border-color: #241f1c;
+}
+
+body.light-mode input, body.light-mode button {
+  background-color: #e7dac7;
+  border-color: #937047;
+  color: #241f1c;
+}
+
+body.light-mode button {
+  background-color: #038C8C;
+}
+
+body.light-mode button:hover {
+  background-color: #241f1c;
+}
+
+body.light-mode .bookmarksList, body.light-mode .bookmarksList > li {
+  border-color: #241f1c;
+}
+
+/* Dark Mode */
 body.dark-mode {
-  background-color: #333;
-  color: #f5f5f5;
+  background-color: #241f1c;
+  color: #e7dac7;
 }
 
 body.dark-mode .workspace {
-  background-color: #444;
-  border-color: #555;
-  color: #f5f5f5;
+  background-color: #937047;
+  border-color: #e7dac7;
 }
 
-body.dark-mode input {
-  background-color: #555;
-  border-color: #666;
-  color: #f5f5f5;
+body.dark-mode input, body.dark-mode button {
+  background-color: #937047;
+  border-color: #e7dac7;
+  color: #241f1c;
 }
 
 body.dark-mode button {
-  background-color: #007BFF;
-  border-color: #666;
-  color: #f5f5f5;
+  background-color: #038C8C;
 }
 
 body.dark-mode button:hover {
-  background-color: #0069D9;
+  background-color: #e7dac7;
 }
 
-body.dark-mode .bookmarksList {
-  border-color: #555;
-}
-
-body.dark-mode .bookmarksList > li {
-  border-color: #666;
+body.dark-mode .bookmarksList, body.dark-mode .bookmarksList > li {
+  border-color: #e7dac7; /* Lighten Dark Green */
 }
 
 
-.toggle-switch {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+/* Both Modes */
+.bookmarksList {
+  list-style-position: inside; /* To align the numbers with the bookmark text */
 }
 
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+.bookmarksList > .bookmarkItem {
+  display: flex;
+  justify-content: space-between; /* Pushes the text and button to the far ends */
+  width: 100%; /* Ensure the flex container takes up the full width */
+  margin-bottom: 5px;
 }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
+.bookmarksList > .bookmarkItem > button {
+  margin-left: 10px; /* Optional: add some space between the text and the button */
 }
