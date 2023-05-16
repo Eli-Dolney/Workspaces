@@ -102,6 +102,54 @@ button:hover {
   background-color: #0069D9;
 }
 
+/* Style the sidebar */
+#sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+#sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+#sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* Style the sidebar button */
+#sidebar-btn {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Style the sidebar links on hover */
+#sidebar a:hover {
+  color: #f1f1f1;
+}
+
+
 input {
   padding: 8px 12px;
   border: 1px solid #ced4da;
@@ -219,4 +267,33 @@ body.dark-mode .bookmarksList, body.dark-mode .bookmarksList > li {
 
 .bookmarksList > .bookmarkItem > button {
   margin-left: 10px; /* Optional: add some space between the text and the button */
+}
+
+/*modal*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding: 50px; /* Space around the modal */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }

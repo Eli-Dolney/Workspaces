@@ -136,21 +136,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Load existing workspaces on startup
-  updateUI();
+   // Load existing workspaces on startup
+   updateUI();
 
-  const themeToggle = document.getElementById('themeToggle');
-  themeToggle.addEventListener('change', toggleTheme);
-
-  function toggleTheme() {
-    const body = document.body;
-
-    if (themeToggle.checked) {
-      body.classList.remove('light-mode');
-      body.classList.add('dark-mode');
-    } else {
-      body.classList.remove('dark-mode');
-      body.classList.add('light-mode');
-    }
-  }
-});
+   const themeToggle = document.getElementById('themeToggle');
+   themeToggle.addEventListener('change', toggleTheme);
+ 
+   function toggleTheme() {
+     const body = document.body;
+ 
+     if (themeToggle.checked) {
+       body.classList.remove('light-mode');
+       body.classList.add('dark-mode');
+     } else {
+       body.classList.remove('dark-mode');
+       body.classList.add('light-mode');
+     }
+   }
+ 
+   // Your existing JavaScript goes here
+   
+   // Add this code to handle the sidebar
+   const sidebar = document.getElementById('sidebar');
+   const sidebarBtn = document.getElementById('sidebar-btn');
+   
+   sidebarBtn.addEventListener('click', openNav);
+   sidebar.querySelector('.closebtn').addEventListener('click', closeNav);
+   
+   function openNav() {
+     sidebar.style.width = '250px'; // Or whatever width you want
+     document.getElementById('main').style.marginLeft = '250px';
+   }
+   
+   function closeNav() {
+     sidebar.style.width = '0';
+     document.getElementById('main').style.marginLeft = '0';
+   }
+ });
+ 
