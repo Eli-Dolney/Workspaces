@@ -1,10 +1,97 @@
+
+
 body {
   font-family: Arial, sans-serif;
-  width: 90%;
+  width: 100%;
   max-width: 100%;
-  padding: 10px;
-  margin: 0 auto;
+  margin: 0 auto; /* Changed this */
   transition: background-color 0.3s, color 0.3s;
+}
+
+#main {
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  max-width: 800px; /* To prevent lines of text from getting too long on large screens */
+}
+
+#main h1 {
+  font-size: calc(2vw + 2vh + 1vmin); /* responsive font-size */
+  margin-top: 0; /* Add this to remove the top margin */
+  margin-bottom: 0.5em; /* Adjust this as per your requirement */
+}
+
+#main p {
+  font-size: calc(1vw + 1vh + 0.5vmin); /* responsive font-size */
+  line-height: 1.5; /* For readability */
+  color: #333;
+  margin-top: 0.5em; /* Add this to reduce the top margin */
+}
+
+@media screen and (max-width: 600px) {
+  #timeWidget {
+    top: 65%!important; /* Adjust as needed */
+  }
+}
+
+
+#timeWidget {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de;
+  color: #ff00de;
+}
+
+
+#timeWidget h2 {
+  font-size: calc(5vw + 5vh + 2vmin); /* responsive font-size */
+  margin-bottom: 10px;
+}
+
+#timeWidget button {
+  padding: 5px 10px;
+  font-size: 1em;
+  
+}
+
+#currentTime {
+  font-size: 2em;
+  color: #333;
+}
+
+#toggleTimeFormat {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: calc(0.5vw + 0.5vh + 0.5vmin); /* responsive font-size */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#toggleTimeFormat:hover {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 2; /* This makes the nav bar always stay on top of other content */
 }
 
 .nav-content {
@@ -17,8 +104,10 @@ body {
 
 .nav-content h1 {
   margin: 0;
+  font-size: 25px;
   flex-grow: 1;
   color: aliceblue;
+  text-align: center;
 }
 
 .nav-content a {
@@ -30,6 +119,17 @@ body {
 
 .nav-content a:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-content a {
+    display: none;
+  }
+
+  .nav-content h1 {
+    display: block;
+    text-align: center;
+  }
 }
 
 /* The switch - the box around the slider */
@@ -102,27 +202,33 @@ button:hover {
   background-color: #0069D9;
 }
 
-/* Style the sidebar */
 #sidebar {
-  height: 100%;
-  width: 0;
+  height: calc(100% - 60px);
+  width: 0;  /* Change this to your desired sidebar width when it's open */
+  box-sizing: border-box;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 60px;
   left: 0;
   background-color: #111;
-  overflow-x: hidden;
+  overflow: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-#sidebar a {
-  padding: 8px 8px 8px 32px;
+
+#sidebar a, #sidebar button {
+  padding: 15px 8px; 
   text-decoration: none;
   font-size: 25px;
   color: #818181;
   display: block;
   transition: 0.3s;
+  margin-bottom: 15px; /* Space between each item */
+  border: none; /* Removes default button border */
+  background: none; /* Removes default button background */
 }
 
 #sidebar .closebtn {
@@ -130,7 +236,6 @@ button:hover {
   top: 0;
   right: 25px;
   font-size: 36px;
-  margin-left: 50px;
 }
 
 #main {
@@ -145,9 +250,14 @@ button:hover {
 }
 
 /* Style the sidebar links on hover */
-#sidebar a:hover {
+#sidebar a:hover, #sidebar button:hover {
   color: #f1f1f1;
 }
+
+#sidebar button:focus {
+  outline: none; /* Removes focus outline */
+}
+
 
 
 input {
@@ -193,6 +303,21 @@ input {
   margin-bottom: 5px;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
 
 /* Light Mode */
 body.light-mode {

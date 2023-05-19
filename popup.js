@@ -139,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
    // Load existing workspaces on startup
    updateUI();
 
+   
+
    const themeToggle = document.getElementById('themeToggle');
    themeToggle.addEventListener('change', toggleTheme);
  
@@ -154,23 +156,68 @@ document.addEventListener('DOMContentLoaded', () => {
      }
    }
  
-   // Your existing JavaScript goes here
    
-   // Add this code to handle the sidebar
-   const sidebar = document.getElementById('sidebar');
-   const sidebarBtn = document.getElementById('sidebar-btn');
+  // Grab the sidebar and the button that controls it
+const sidebar = document.getElementById('sidebar');
+const sidebarBtn = document.getElementById('sidebar-btn');
+
+// Add event listeners for opening and closing the sidebar
+sidebarBtn.addEventListener('click', openNav);
+sidebar.querySelector('.closebtn').addEventListener('click', closeNav);
+
+function openNav() {
+  sidebar.style.width = '250px';  // Adjust as necessary
+  document.getElementById('main').style.marginLeft = '250px';  // Adjust as necessary
+}
+
+function closeNav() {
+  sidebar.style.width = '0';
+  document.getElementById('main').style.marginLeft = '0';
+}
+
+
+   let is24HourFormat = true;
+
+   document.getElementById('toggleTimeFormat').addEventListener('click', () => {
+       is24HourFormat = !is24HourFormat;
+       displayTime();
+   });
+ 
+   function displayTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    let timeFormat = 'AM';
+ 
+    if (!is24HourFormat) {
+        if (hours >= 12) {
+            if(hours > 12) // Convert to 12-hour format
+                hours -= 12;
+            timeFormat = 'PM';
+        } else if (hours === 0) {
+            hours = 12; // Replace 0 with 12 in 12-hour time format
+        }
+    }
+
+    const timeWidget = document.getElementById("timeWidget");
+
+window.onpointermove = event => { 
+  const { clientX, clientY } = event;
+  
+  timeWidget.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, { duration: 3000, fill: "forwards" });
+}
+ 
+    document.getElementById('currentTime').innerText = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}` + (is24HourFormat ? '' : ` ${timeFormat}`);
+ }
+ 
+   // Call displayTime every second
+   setInterval(displayTime, 1000);
+ 
+   // Display the time immediately on page load
+   displayTime();
    
-   sidebarBtn.addEventListener('click', openNav);
-   sidebar.querySelector('.closebtn').addEventListener('click', closeNav);
-   
-   function openNav() {
-     sidebar.style.width = '250px'; // Or whatever width you want
-     document.getElementById('main').style.marginLeft = '250px';
-   }
-   
-   function closeNav() {
-     sidebar.style.width = '0';
-     document.getElementById('main').style.marginLeft = '0';
-   }
  });
  

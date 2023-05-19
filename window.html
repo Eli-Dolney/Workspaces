@@ -6,17 +6,14 @@
   <link rel="stylesheet" href="styles.css">
   <title>QwikLinks</title>
 </head>
-<body class="light-mode"> <!-- Add the light-mode class to the body -->
-  <!-- Add a basic navigation bar -->
+<body class="light-mode">
   <nav>
     <div class="nav-content">
       <button id="sidebar-btn">&#9776;</button>
-       <!-- Logo image -->
       <h1>QwikLinks</h1>
       <a href="bit.ly/Linkedin-Eli">Linkedin</a>
       <a href="https://elidolney.dev/">My Website</a>
       <a href="bit.ly/Github-Eli">Github</a>
-      <!-- Move the toggle switch to the navigation bar -->
       <label class="toggle-switch">
         <input type="checkbox" id="themeToggle">
         <span class="slider round"></span>
@@ -25,49 +22,52 @@
   </nav>
 
   <div id="sidebar">
-    <a href="#" class="closebtn">&times;</a> <!-- The character here is a unicode cross icon -->
+    <button id="sidebarClose" class="closebtn">&times;</button>
     <button id="openTasksButton">Task List</button>
-    <a href="notes.html">Notes</a>
-    <!-- Add more links here as needed -->
+    <button id="openWorkspacesButton">Workspaces</button>
   </div>
 
-
   <div id="main">
-    <div>
-      <input type="text" id="workspaceName" placeholder="Enter workspace name">
-      <button id="createWorkspace">Create Workspace</button>
-      
-    </div>
-    <hr>
-    <div id="workspacesContainer"></div>
+    <h1>Welcome to QwikLinks</h1>
+    <p>Your personal workspace and task manager. </p>
+  </div>
 
-  <!-- Modal -->
-<div id="taskModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id="tasksContainer">
-      <!-- Your tasks list HTML goes here -->
+  <div id="timeWidget">
+    <h2 id="currentTime"></h2>
+    <button id="toggleTimeFormat">Toggle Time Format</button>
+  </div>
+
+  <!-- Task List Modal -->
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
       <h1>My Task List</h1>
       <input type="text" id="taskInput" placeholder="New task...">
       <button id="addTaskButton">Add Task</button>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
 
-      <ul id="taskList">
-        <!-- Tasks will be added here -->
-      </ul>
+  <!-- Workspace Modal -->
+  <div id="workspaceModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1>My Workspaces</h1>
+      <input type="text" id="workspaceName" placeholder="Enter workspace name">
+      <button id="createWorkspace">Create Workspace</button>
+      <div id="workspacesContainer"></div>
     </div>
   </div>
 </div>
-  
-    <!-- New section 1 -->
-    <section>
-      <h2>Section 1</h2>
-      <p>Placeholder description for section 1. Add your content here.</p>
-    </section>
-    <hr>
-  
-    <script src="popup.js"></script>
-    <script src="tasks.js"></script>
 
-  </div>
+
+
+
+
+  <script src="popup.js"></script>
+  <script src="tasks.js"></script>
+  <script src="workspaces.js"></script>
+  
+
 </body>
 </html>
